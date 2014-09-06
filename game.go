@@ -2,7 +2,7 @@ package main
 
 import (
     "github.com/veandco/go-sdl2/sdl"
-    "github.com/EvanTheB/spacegame/tools"
+    "github.com/EvanTheB/SDLGame/tools"
     "math"
     "fmt"
     "os"
