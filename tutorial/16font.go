@@ -3,7 +3,7 @@ package main
 import (
     "github.com/veandco/go-sdl2/sdl"
     "github.com/veandco/go-sdl2/sdl_ttf"
-    "github.com/EvanTheB/spacegame/tools"
+    "github.com/EvanTheB/SDLGame/tools"
 )
 
 
