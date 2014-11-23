@@ -12,8 +12,8 @@ func LoadText(renderer *sdl.Renderer, font *ttf.Font, text string, textColor sdl
     if bmp == nil{
         fmt.Fprintf(os.Stderr, "Unable to load text %s! SDL Error: %s\n", ttf.GetError() )
     }else{        
-        texture := renderer.CreateTextureFromSurface(bmp)
-        if texture == nil{
+        texture, err := renderer.CreateTextureFromSurface(bmp)
+        if err != nil{
             fmt.Fprintf(os.Stderr,"Unable to create texture %s! SDL Error: %s\n", sdl.GetError() )
         }
         bmp.Free()
