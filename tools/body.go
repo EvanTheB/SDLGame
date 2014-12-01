@@ -12,7 +12,7 @@ type Body struct {
 }
 
 func UpdateBodiesSeconds(bodies []*Body, seconds float64) {
-	timeStep := seconds / 10
+	timeStep := seconds / 10000
 	for seconds > timeStep {
 		UpdateBodies(bodies, timeStep)
 		seconds -= timeStep
