@@ -3,7 +3,7 @@ package tools
 import ()
 
 type ViewBox struct {
-	Vector
+	X, Y float64
 	W, H float64
 }
 
@@ -59,7 +59,7 @@ func GetAutoView(points []Vector, screenRatio float64) ViewBox {
 	left := get(points, minX).X
 	top := get(points, maxY).Y
 	bot := get(points, minY).Y
-	ret := ViewBox{Vector{left, bot}, right - left, top - bot}
+	ret := ViewBox{left, bot, right - left, top - bot}
 	// scale to correct ratio
 	if ret.H*screenRatio > ret.W {
 		ret.ZoomW(ret.W / (ret.H * screenRatio))

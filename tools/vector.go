@@ -5,11 +5,11 @@ import (
 )
 
 type Vector struct {
-	X, Y float64
+	X, Y, Z float64
 }
 
 func (v1 Vector) To(v2 Vector) Vector {
-	return Vector{v2.X - v1.X, v2.Y - v1.Y}
+	return Vector{v2.X - v1.X, v2.Y - v1.Y, v2.Z - v1.Z}
 }
 
 func (v1 Vector) Dist(v2 Vector) float64 {
@@ -27,9 +27,9 @@ func (v1 *Vector) Mul(m float64) {
 }
 
 func Add(v1 Vector, v2 Vector) Vector {
-	return Vector{v1.X + v2.X, v1.Y + v2.Y}
+	return Vector{v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z}
 }
 
 func Mul(v1 Vector, m float64) Vector {
-	return Vector{v1.X * m, v1.Y * m}
+	return Vector{v1.X * m, v1.Y * m, v1.Z * m}
 }

@@ -5,6 +5,7 @@ import (
 )
 
 type Body struct {
+	Name     string
 	Mass     float64
 	Radius   float64
 	Position Vector
@@ -24,7 +25,7 @@ func UpdateBodiesSeconds(bodies []*Body, seconds float64) {
 
 func UpdateBodies(bodies []*Body, stepSize float64) {
 	for _, a := range bodies {
-		totalDeltaA := Vector{0, 0}
+		totalDeltaA := Vector{}
 		for _, b := range bodies {
 			if a == b {
 				continue
@@ -36,7 +37,7 @@ func UpdateBodies(bodies []*Body, stepSize float64) {
 		}
 		totalDeltaA.Mul(stepSize)
 		a.Velocity.Add(totalDeltaA)
-		deltaV := Vector{a.Velocity.X, a.Velocity.Y}
+		deltaV := Vector{a.Velocity.X, a.Velocity.Y, a.Velocity.Z}
 		deltaV.Mul(stepSize)
 		a.Position.Add(deltaV)
 	}
