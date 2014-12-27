@@ -6,7 +6,7 @@ import (
 
 func TestPlanets(t *testing.T) {
 	data := GetJPLStringStored()
-	planets := JPLToBody(GetJPLXYZ(data, DAY1))
+	planets := GetPlanets(data, DAY1, DAY2)
 	t.Error(planets, data)
 }
 

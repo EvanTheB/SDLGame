@@ -11,10 +11,12 @@ import (
 )
 
 const JPL_ADDR = "http://ssd.jpl.nasa.gov/txt/p_elem_t1.txt"
-const JPL_FILE = "p_elem_t1.txt"
+const JPL_FILE = "tools/p_elem_t1.txt"
 const DAY1 = (2456992.5 - 2451545.0) / 36525.0
 const DAY2 = (2456993.5 - 2451545.0) / 36525.0
 const DAY1_eps = (2456992.500011574 - 2451545.0) / 36525.0
+const AU_TO_M = 149597870700
+const CENT_TO_SEC = 100 * 365.25 * 24 * 60 * 60
 
 type JPLPlanet struct {
 	Name     string
@@ -69,6 +71,39 @@ func GetJPLStringStored() []string {
 	n := strings.Index(pageString, "Mercury")
 	lines := strings.Split(pageString[n:], "\n")
 	return lines[:len(lines)-1]
+}
+
+func GetPlanets(jplStrings []string, T1, T2 float64) []*Body {
+	p1 := GetJPLXYZ(jplStrings, T1)
+	p2 := GetJPLXYZ(jplStrings, T2)
+
+	// P and V are not correct...
+	planets := []*Body{
+		&Body{"Sun", 1.988544E30, 6.963E5 * 1E3, Vector{0, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Mercury", 3.302E23, 2440 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Venus", 48.685E23, 6051.8 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Earth", 5.97219E24, 6371 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Mars", 6.4185E23, 3389 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Jupiter", 1898.13E24, 71492 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Saturn", 5.68319E26, 60268 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Uranus", 86.8103E24, 25559 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Neptune", 102.41E24, 24766 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Pluto", 1.307E22, 1195 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+	}
+	for i := 0; i < len(p1) && i+1 < len(planets); i++ {
+		fmt.Println("saving", p1[i].Name, "to", planets[i+1].Name)
+		pos := p1[i].Position
+		pos.Mul(AU_TO_M)
+		planets[i+1].Position = pos
+		vel := p1[i].Position.To(p2[i].Position)
+		vel.Mul(AU_TO_M)
+		time := (T2 - T1) * CENT_TO_SEC
+		vel.Mul(1 / time)
+		planets[i+1].Velocity = vel
+		fmt.Println("\t", planets[i+1].Position)
+		fmt.Println("\t", planets[i+1].Velocity)
+	}
+	return planets
 }
 
 func GetJPLXYZ(jplStrings []string, T_Now float64) []JPLPlanet {
@@ -137,21 +172,24 @@ func GetJPLXYZ(jplStrings []string, T_Now float64) []JPLPlanet {
 	return retPlanets
 }
 
-func JPLToBody(jplPlanets []JPLPlanet) []Body {
+func JPLToBody(jplPlanets []JPLPlanet) []*Body {
 	// P and V are not correct...
-	planets := []Body{
-		Body{"Sun", 1.988544E30, 6.963E5 * 1E3, Vector{0, 0, 0}, Vector{0, 0, 0}},
-		Body{"Mercury", 3.302E23, 2440 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 2.9E4, 0}},
-		Body{"Venus", 48.685E23, 6051.8 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 2.9E4, 0}},
-		Body{"Earth", 5.97219E24, 6371 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 2.9E4, 0}},
-		Body{"Jupiter", 1898.13E24, 71492 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 2.41e4, 0}},
-		Body{"Saturn", 5.68319E26, 60268 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 2.41e4, 0}},
-		Body{"Uranus", 86.8103E24, 25559 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 2.41e4, 0}},
-		Body{"Neptune", 102.41E24, 24766 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 2.41e4, 0}},
-		Body{"Pluto", 1.307E22, 1195 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 2.41e4, 0}},
+	planets := []*Body{
+		&Body{"Sun", 1.988544E30, 6.963E5 * 1E3, Vector{0, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Mercury", 3.302E23, 2440 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Venus", 48.685E23, 6051.8 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Earth", 5.97219E24, 6371 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Mars", 6.4185E23, 3389 * 1E3, Vector{1.5E11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Jupiter", 1898.13E24, 71492 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Saturn", 5.68319E26, 60268 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Uranus", 86.8103E24, 25559 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Neptune", 102.41E24, 24766 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
+		&Body{"Pluto", 1.307E22, 1195 * 1E3, Vector{2.25e11, 0, 0}, Vector{0, 0, 0}},
 	}
-	for i := range jplPlanets {
-		planets[i+1].Position = jplPlanets.Position
+	for i := 0; i < len(jplPlanets) && i+1 < len(planets); i++ {
+		fmt.Println("saving", jplPlanets[i].Name, "to", planets[i+1].Name)
+		fmt.Println("\t", jplPlanets[i].Position)
+		planets[i+1].Position = jplPlanets[i].Position
 	}
 	return planets
 }

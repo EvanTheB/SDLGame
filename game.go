@@ -14,28 +14,24 @@ const (
 	SCREEN_RATIO float64 = float64(SCREEN_W) / float64(SCREEN_H)
 )
 
-var (
-	Sun   = tools.Body{1.988E30, 6.96E8, tools.Vector{0, 0}, tools.Vector{0, 0}}
-	Earth = tools.Body{5.972E24, 6.371E6, tools.Vector{1.5E11, 0}, tools.Vector{0, 2.9E4}}
-	Mars  = tools.Body{6.4185e23, 6.371E6, tools.Vector{2.25e11, 0}, tools.Vector{0, 2.41e4}}
-	Ecc   = tools.Body{1e20, 1e5, tools.Vector{2e11, 0}, tools.Vector{0, 3e4}}
-)
-
 var renderer *sdl.Renderer
 var window *sdl.Window
 var sprite *sdl.Texture
 
 func main() {
 	window, renderer = tools.Start("planets", int(SCREEN_W), int(SCREEN_H))
-	wideView := tools.ViewBox{tools.Vector{-SCREEN_SCALE / 2 / float64(SCREEN_H) * float64(SCREEN_W),
-		-SCREEN_SCALE / 2},
+	wideView := tools.ViewBox{
+		-SCREEN_SCALE / 2 / float64(SCREEN_H) * float64(SCREEN_W),
+		-SCREEN_SCALE / 2,
 		SCREEN_SCALE / float64(SCREEN_H) * float64(SCREEN_W),
-		SCREEN_SCALE}
+		SCREEN_SCALE,
+	}
 	defer window.Destroy()
 	defer renderer.Destroy()
 	sprite = tools.LoadTextureTransparent(renderer, "resources/sprites.png", 0, 0xFF, 0xFF)
 
-	bodies := []*tools.Body{&Sun, &Earth, &Mars, &Ecc}
+	data := tools.GetJPLStringStored()
+	bodies := tools.GetPlanets(data, tools.DAY1, tools.DAY2)
 
 	quit := false
 	curView := &wideView
@@ -50,7 +46,9 @@ func main() {
 					auto := tools.GetAutoView(
 						[]tools.Vector{
 							bodies[0].Position,
-							bodies[1].Position},
+							bodies[1].Position,
+							bodies[9].Position,
+						},
 						SCREEN_RATIO)
 					curView = &auto
 				case sdl.K_DOWN:
@@ -68,7 +66,7 @@ func main() {
 
 		renderer.SetDrawColor(0, 0, 0, 0xFF)
 
-		tools.UpdateBodiesSeconds(bodies, 60*60*24*7)
+		tools.UpdateBodiesSeconds(bodies, 60*60*24)
 		DrawBodies(bodies, *curView)
 
 		renderer.Present()
