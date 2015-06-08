@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	SCREEN_W     int     = 640
-	SCREEN_H     int     = 480
+	SCREEN_W     int     = 1024
+	SCREEN_H     int     = 800
 	SCREEN_SCALE float64 = 5E11
 	SCREEN_RATIO float64 = float64(SCREEN_W) / float64(SCREEN_H)
 )
