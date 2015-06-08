@@ -30,9 +30,17 @@ func main() {
 	defer renderer.Destroy()
 	sprite = tools.LoadTextureTransparent(renderer, "resources/sprites.png", 0, 0xFF, 0xFF)
 
-	data := tools.GetJPLStringStored()
-	bodies := tools.GetPlanets(data, tools.DAY1, tools.DAY2)
-
+	bodies := tools.GetPlanets2()
+	jup := 0
+	gany := 0
+	for i, b := range bodies {
+		if b.Name == "Jupiter (599)" {
+			jup = i
+		}
+		if b.Name == "Ganymede (503)" {
+			gany = i
+		}
+	}
 	quit := false
 	curView := &wideView
 	for !quit {
@@ -45,9 +53,8 @@ func main() {
 				case sdl.K_UP:
 					auto := tools.GetAutoView(
 						[]tools.Vector{
-							bodies[0].Position,
-							bodies[1].Position,
-							bodies[9].Position,
+							bodies[jup].Position,
+							bodies[gany].Position,
 						},
 						SCREEN_RATIO)
 					curView = &auto
@@ -56,7 +63,7 @@ func main() {
 				case sdl.K_q:
 					quit = true
 				}
-				// fmt.Println("View:", curView)
+				fmt.Println("View:", curView)
 			}
 
 		}
@@ -66,7 +73,7 @@ func main() {
 
 		renderer.SetDrawColor(0, 0, 0, 0xFF)
 
-		tools.UpdateBodiesSeconds(bodies, 60*60*24)
+		tools.UpdateBodiesSeconds(bodies, 60*60)
 		DrawBodies(bodies, *curView)
 
 		renderer.Present()
