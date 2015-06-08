@@ -1,0 +1,70 @@
+: Dec 02, 2013           Europa / (Jupiter)                         502
+
+ SATELLITE PHYSICAL PROPERTIES:
+  Radius (km)             = 1565   +- 8     Density (g cm^-3)   =  2.99 +- 0.05
+  Mass (10^20 kg )        =  479.7 +- 1.5   Geometric Albedo    =  0.6  
+
+ SATELLITE ORBITAL DATA:
+  Semi-major axis, a (km) = 671.079 (10^3)  Orbital period      = 3.551810 d
+  Eccentricity, e         = 0.0101          Rotational period   = Synchronous
+  Inclination, i  (deg)   = 0.464
+*** / PORT_LOGIN Sun Jun  7 20:43:41 2015 Pasadena, USA    / Horizons    
+*******************************************************************************
+Target body name: Europa (502)                    {source: JUP310}
+Center body name: Solar System Barycenter (0)     {source: DE-0431LE-0431}
+Center-site name: BODY CENTER
+*******************************************************************************
+Start time      : A.D. 2014-Dec-05 00:00:00.0000 CT 
+Stop  time      : A.D. 2014-Dec-06 00:00:00.0000 CT 
+Step-size       : 1440 minutes
+*******************************************************************************
+Center geodetic : 0.00000000,0.00000000,0.0000000 {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.00000000,0.00000000,0.0000000 {E-lon(deg),Dxy(km),Dz(km)}
+Center radii    : (undefined)                                                  
+Output units    : KM-S                                                         
+Output format   : 03
+Reference frame : ICRF/J2000.0                                                 
+Output type     : GEOMETRIC cartesian states
+Coordinate systm: Ecliptic and Mean Equinox of Reference Epoch                 
+*******************************************************************************
+JDCT ,   , X, Y, Z, VX, VY, VZ, LT, RG, RR,
+*******************************************************************************
+$$SOE
+2456996.500000000, A.D. 2014-Dec-05 00:00:00.0000, -5.351500724071117E+08,  5.863202664719323E+08,  9.491415003242036E+06,  3.577326172151594E+00, -1.115716558218920E+01,  3.058190562651688E-01,  2.648102183992917E+03,  7.938810627744048E+08, -1.064791238646113E+01,
+2456997.500000000, A.D. 2014-Dec-06 00:00:00.0000, -5.351817431551497E+08,  5.862452073970340E+08,  9.552435603679206E+06, -9.372476140175230E+00,  5.409624873680538E+00,  8.602323920269190E-01,  2.647990939004471E+03,  7.938477123658785E+08,  1.032384670416710E+01,
+$$EOE
+*******************************************************************************
+Coordinate system description:
+
+  Ecliptic and Mean Equinox of Reference Epoch
+
+    Reference epoch: J2000.0
+    xy-plane: plane of the Earth's orbit at the reference epoch
+    x-axis  : out along ascending node of instantaneous plane of the Earth's
+              orbit and the Earth's mean equator at the reference epoch
+    z-axis  : perpendicular to the xy-plane in the directional (+ or -) sense
+              of Earth's north pole at the reference epoch.
+
+Symbol meaning  
+
+    JDCT     Epoch Julian Date, Coordinate Time
+      X      x-component of position vector (km)                               
+      Y      y-component of position vector (km)                               
+      Z      z-component of position vector (km)                               
+      VX     x-component of velocity vector (km/sec)                           
+      VY     y-component of velocity vector (km/sec)                           
+      VZ     z-component of velocity vector (km/sec)                           
+      LT     One-way down-leg Newtonian light-time (sec)                       
+      RG     Range; distance from coordinate center (km)                       
+      RR     Range-rate; radial velocity wrt coord. center (km/sec)            
+
+Geometric states/elements have no aberration corrections applied.
+
+ Computations by ...
+     Solar System Dynamics Group, Horizons On-Line Ephemeris System
+     4800 Oak Grove Drive, Jet Propulsion Laboratory
+     Pasadena, CA  91109   USA
+     Information: http://ssd.jpl.nasa.gov/
+     Connect    : telnet://ssd.jpl.nasa.gov:6775  (via browser)
+                  telnet ssd.jpl.nasa.gov 6775    (via command-line)
+     Author     : Jon.Giorgini@jpl.nasa.gov

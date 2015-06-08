@@ -1,0 +1,72 @@
+: Jan 08, 2014             Umbriel / (Uranus)                       702
+
+ SATELLITE PHYSICAL PROPERTIES:
+  Radius (km)           = 584.7  +- 2.8     Density (g cm^-3)   =  1.40 +- 0.16
+  Mass (10^20 kg )      =  11.72 +- 1.35    Geometric Albedo    =  0.18 
+                                            V(1,0)              = +2.10
+
+ SATELLITE ORBITAL DATA:
+  Semi-major axis, a (km) = 266.0 (10^3)    Orbital period      = 4.144 d
+  Eccentricity, e         =   0.0050        Rotational period   = Synchronous
+  Inclination, i  (deg)   =   0.36
+*** / PORT_LOGIN Sun Jun  7 20:46:51 2015 Pasadena, USA    / Horizons    
+*******************************************************************************
+Target body name: Umbriel (702)                   {source: URA111}
+Center body name: Solar System Barycenter (0)     {source: DE-0431LE-0431}
+Center-site name: BODY CENTER
+*******************************************************************************
+Start time      : A.D. 2014-Dec-05 00:00:00.0000 CT 
+Stop  time      : A.D. 2014-Dec-06 00:00:00.0000 CT 
+Step-size       : 1440 minutes
+*******************************************************************************
+Center geodetic : 0.00000000,0.00000000,0.0000000 {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.00000000,0.00000000,0.0000000 {E-lon(deg),Dxy(km),Dz(km)}
+Center radii    : (undefined)                                                  
+Small perturbers: Yes                             {source: SB431-BIG16}
+Output units    : KM-S                                                         
+Output format   : 03
+Reference frame : ICRF/J2000.0                                                 
+Output type     : GEOMETRIC cartesian states
+Coordinate systm: Ecliptic and Mean Equinox of Reference Epoch                 
+*******************************************************************************
+JDCT ,   , X, Y, Z, VX, VY, VZ, LT, RG, RR,
+*******************************************************************************
+$$SOE
+2456996.500000000, A.D. 2014-Dec-05 00:00:00.0000,  2.892314849926116E+09,  7.709273051116294E+08, -3.440233730703659E+07,  1.883483711970142E+00,  5.852635278710054E+00,  2.901671539144202E+00,  9.985216325178346E+03,  2.993492545786943E+09,  3.293731258417598E+00,
+2456997.500000000, A.D. 2014-Dec-06 00:00:00.0000,  2.892513843573214E+09,  7.713861246588349E+08, -3.443293635790164E+07,  1.084376659987591E+00,  5.150243869655653E+00, -3.434515120669922E+00,  9.986253066029154E+03,  2.993803352874916E+09,  2.414207196993424E+00,
+$$EOE
+*******************************************************************************
+Coordinate system description:
+
+  Ecliptic and Mean Equinox of Reference Epoch
+
+    Reference epoch: J2000.0
+    xy-plane: plane of the Earth's orbit at the reference epoch
+    x-axis  : out along ascending node of instantaneous plane of the Earth's
+              orbit and the Earth's mean equator at the reference epoch
+    z-axis  : perpendicular to the xy-plane in the directional (+ or -) sense
+              of Earth's north pole at the reference epoch.
+
+Symbol meaning  
+
+    JDCT     Epoch Julian Date, Coordinate Time
+      X      x-component of position vector (km)                               
+      Y      y-component of position vector (km)                               
+      Z      z-component of position vector (km)                               
+      VX     x-component of velocity vector (km/sec)                           
+      VY     y-component of velocity vector (km/sec)                           
+      VZ     z-component of velocity vector (km/sec)                           
+      LT     One-way down-leg Newtonian light-time (sec)                       
+      RG     Range; distance from coordinate center (km)                       
+      RR     Range-rate; radial velocity wrt coord. center (km/sec)            
+
+Geometric states/elements have no aberration corrections applied.
+
+ Computations by ...
+     Solar System Dynamics Group, Horizons On-Line Ephemeris System
+     4800 Oak Grove Drive, Jet Propulsion Laboratory
+     Pasadena, CA  91109   USA
+     Information: http://ssd.jpl.nasa.gov/
+     Connect    : telnet://ssd.jpl.nasa.gov:6775  (via browser)
+                  telnet ssd.jpl.nasa.gov 6775    (via command-line)
+     Author     : Jon.Giorgini@jpl.nasa.gov

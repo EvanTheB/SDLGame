@@ -1,0 +1,70 @@
+ / PORT_LOGIN Sun Jun  7 21:21:16 2015 Pasadena, USA    / Horizons    
+*******************************************************************************
+Target body name: 120347 Salacia (2004 SB60)      {source: JPL#12}
+Center body name: Solar System Barycenter (0)     {source: DE-0431LE-0431}
+Center-site name: BODY CENTER
+*******************************************************************************
+Start time      : A.D. 2014-Dec-05 00:00:00.0000 CT 
+Stop  time      : A.D. 2014-Dec-06 00:00:00.0000 CT 
+Step-size       : 1440 minutes
+*******************************************************************************
+Center geodetic : 0.00000000,0.00000000,0.0000000 {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.00000000,0.00000000,0.0000000 {E-lon(deg),Dxy(km),Dz(km)}
+Center radii    : (undefined)                                                  
+Small perturbers: Yes                             {source: SB431-BIG16}
+Output units    : KM-S                                                         
+Output format   : 03
+Reference frame : ICRF/J2000.0                                                 
+Output type     : GEOMETRIC cartesian states
+Coordinate systm: Ecliptic and Mean Equinox of Reference Epoch                 
+*******************************************************************************
+Initial FK5/J2000.0 heliocentric ecliptic osculating elements (au, days, deg.):
+  EPOCH=  2452945.5 ! 2003-Nov-02.00 (CT)          Residual RMS= .26174        
+   EC= .1075563874651964   QR= 37.35288578819706   TP= 2423778.3320212504      
+   OM= 280.2158757227778   W=  307.4559362216767   IN= 23.95561260357488       
+Asteroid physical parameters (km, seconds, rotational period in hours):        
+   GM= n.a.                RAD= n.a.               ROTPER= 6.09                
+   H= 4.2                  G= .150                 B-V= n.a.                   
+                           ALBEDO= n.a.            STYP= n.a.                  
+*******************************************************************************
+JDCT ,   , X, Y, Z, VX, VY, VZ, LT, RG, RR,
+*******************************************************************************
+$$SOE
+2456996.500000000, A.D. 2014-Dec-05 00:00:00.0000,  6.104491202207197E+09, -2.793939350750359E+08,  2.645425698996547E+09,  3.967422292062647E-01,  4.284874754617231E+00,  5.065670748800621E-01,  2.221175006079130E+04,  6.658915147206274E+09,  3.851718981532324E-01,
+2456997.500000000, A.D. 2014-Dec-06 00:00:00.0000,  6.104525470480924E+09, -2.790237214276069E+08,  2.645469461946599E+09,  3.965048481477274E-01,  4.284885600115580E+00,  5.064641763199759E-01,  2.221186106460269E+04,  6.658948425311738E+09,  3.851546170453371E-01,
+$$EOE
+*******************************************************************************
+Coordinate system description:
+
+  Ecliptic and Mean Equinox of Reference Epoch
+
+    Reference epoch: J2000.0
+    xy-plane: plane of the Earth's orbit at the reference epoch
+    x-axis  : out along ascending node of instantaneous plane of the Earth's
+              orbit and the Earth's mean equator at the reference epoch
+    z-axis  : perpendicular to the xy-plane in the directional (+ or -) sense
+              of Earth's north pole at the reference epoch.
+
+Symbol meaning  
+
+    JDCT     Epoch Julian Date, Coordinate Time
+      X      x-component of position vector (km)                               
+      Y      y-component of position vector (km)                               
+      Z      z-component of position vector (km)                               
+      VX     x-component of velocity vector (km/sec)                           
+      VY     y-component of velocity vector (km/sec)                           
+      VZ     z-component of velocity vector (km/sec)                           
+      LT     One-way down-leg Newtonian light-time (sec)                       
+      RG     Range; distance from coordinate center (km)                       
+      RR     Range-rate; radial velocity wrt coord. center (km/sec)            
+
+Geometric states/elements have no aberration corrections applied.
+
+ Computations by ...
+     Solar System Dynamics Group, Horizons On-Line Ephemeris System
+     4800 Oak Grove Drive, Jet Propulsion Laboratory
+     Pasadena, CA  91109   USA
+     Information: http://ssd.jpl.nasa.gov/
+     Connect    : telnet://ssd.jpl.nasa.gov:6775  (via browser)
+                  telnet ssd.jpl.nasa.gov 6775    (via command-line)
+     Author     : Jon.Giorgini@jpl.nasa.gov
